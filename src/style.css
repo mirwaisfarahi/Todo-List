@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 body {
   margin: 0;
@@ -33,6 +33,10 @@ main {
   margin: 0;
 }
 
+#todo-form {
+  width: 98%;
+}
+
 #new-task {
   width: 100%;
   font-size: 15px;
@@ -60,10 +64,17 @@ main {
 
 #todo-list li {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   padding: 15px 25px;
   box-sizing: border-box;
   border-bottom: 1px solid #e9ecef;
+  gap: 10px;
+  position: relative;
+}
+
+#todo-list #delete {
+  position: absolute;
+  right: 10px;
 }
 
 .todo-input {

@@ -1,6 +1,10 @@
 import './style.css';
 
-const toDoList = [
+// select the todo list item
+const todoListItems = document.querySelector('#todo-list');
+
+// define an array to add todo tasks
+const todoList = [
   {
     index: 1,
     description: 'Complete the Todo list task',
@@ -14,8 +18,21 @@ const toDoList = [
   },
 ];
 
-const todoTask = document.querySelector('#todo-list');
+// renderTodo function
+const renderTodo = (list) => {
+  // clean up tolistItems
+  todoListItems.innerHTML = '';
 
-toDoList.forEach((task) => {
-  todoTask.innerHTML += `<li> ${task.description}</li>`;
-});
+  // loop through the todo list
+  list.forEach((item) => {
+    // create an li element
+    const li = document.createElement('li');
+
+    // add data, checkbox and delete button to li
+    li.innerHTML = `<input type = 'checkbox'> ${item.description} <button id="delete"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button>`;
+
+    todoListItems.appendChild(li);
+  });
+};
+
+renderTodo(todoList);
