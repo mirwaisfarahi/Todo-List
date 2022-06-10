@@ -2,7 +2,7 @@
 
 # Todo List Application
 
-> This is a HTML/CSS and Javscript based web application. It is used to add books with title and author details. This project has been developed as a part of Microverse Module 2 projects with ES6 syntax.
+> This is a HTML/CSS and Javscript based web application. It is used as a todo list for daily tasks.
 
 ## Built With
 
