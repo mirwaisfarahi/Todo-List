@@ -1,6 +1,30 @@
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
+"use strict";
+(self["webpackChunktodo_list"] = self["webpackChunktodo_list"] || []).push([["main"],{
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
+
+var toDoList = [{
+  index: 1,
+  description: 'Complete the Todo list task',
+  completed: false
+}, {
+  index: 2,
+  description: 'Attend Morning Session Meeting',
+  completed: false
+}];
+var todoTask = document.querySelector('#todo-list');
+toDoList.forEach(function (task) {
+  todoTask.innerHTML += "<li> ".concat(task.description, "</li>");
+});
+
+/***/ }),
 
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/style.css":
 /*!*************************************************************!*\
@@ -20,8 +44,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n    background-color: blueviolet;\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,4BAA4B;AAChC","sourcesContent":["body {\n    background-color: blueviolet;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  margin: 0;\n  height: 100vh;\n  background-color: #e9ecef;\n  font-family: 'Open Sans', sans-serif;\n  box-sizing: border-box;\n  padding: 130px 0;\n}\n\nmain {\n  width: 40%;\n  min-width: 450px;\n  font-size: 17px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background-color: #fff;\n  box-sizing: border-box;\n  border-radius: 8px;\n  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;\n  margin: 0 auto;\n}\n\n#header {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n  align-items: baseline;\n  padding: 30px 30px 20px;\n  box-sizing: border-box;\n  margin: 0;\n}\n\n#new-task {\n  width: 100%;\n  font-size: 15px;\n  padding: 15px 30px;\n  border-radius: 4px;\n  border: 1px solid #e9ecef;\n  box-sizing: border-box;\n  outline: none;\n  color: #8b8c89;\n}\n\n#new-task::placeholder {\n  color: #a5a58d;\n  font-style: italic;\n}\n\n#todo-list {\n  width: 100%;\n  min-height: 67px;\n  padding: 0;\n  margin: 0;\n  list-style-type: none;\n  font-weight: 300;\n}\n\n#todo-list li {\n  display: flex;\n  justify-content: space-between;\n  padding: 15px 25px;\n  box-sizing: border-box;\n  border-bottom: 1px solid #e9ecef;\n}\n\n.todo-input {\n  border: none;\n  outline: none;\n  font-size: 15px;\n  font-family: inherit;\n  align-self: flex-start;\n}\n\n.todo-task.active .todo-input {\n  text-decoration: line-through;\n}\n\n.todo-task.focus {\n  background-color: rgba(239, 211, 215, 0.2);\n}\n\n.todo-task.focus .todo-input {\n  background-color: rgba(239, 211, 215, 0.2);\n}\n\nbutton {\n  min-width: 30px;\n  cursor: pointer;\n  background-color: transparent;\n  border: none;\n  font-size: 1rem;\n  font-family: inherit;\n  display: flex;\n  align-items: baseline;\n  justify-content: center;\n}\n\ni {\n  font-size: 17px;\n  color: #a5a58d;\n}\n\n#clear-completed {\n  width: 100%;\n  text-align: center;\n  cursor: pointer;\n  color: #a5a58d;\n  margin: 0;\n  padding: 15px;\n  box-sizing: border-box;\n  background-color: #f5f3f4;\n  border-bottom-left-radius: 8px;\n  border-bottom-right-radius: 8px;\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAEA;EACE,SAAS;EACT,aAAa;EACb,yBAAyB;EACzB,oCAAoC;EACpC,sBAAsB;EACtB,gBAAgB;AAClB;;AAEA;EACE,UAAU;EACV,gBAAgB;EAChB,eAAe;EACf,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,sBAAsB;EACtB,sBAAsB;EACtB,kBAAkB;EAClB,0CAA0C;EAC1C,cAAc;AAChB;;AAEA;EACE,WAAW;EACX,aAAa;EACb,8BAA8B;EAC9B,qBAAqB;EACrB,uBAAuB;EACvB,sBAAsB;EACtB,SAAS;AACX;;AAEA;EACE,WAAW;EACX,eAAe;EACf,kBAAkB;EAClB,kBAAkB;EAClB,yBAAyB;EACzB,sBAAsB;EACtB,aAAa;EACb,cAAc;AAChB;;AAEA;EACE,cAAc;EACd,kBAAkB;AACpB;;AAEA;EACE,WAAW;EACX,gBAAgB;EAChB,UAAU;EACV,SAAS;EACT,qBAAqB;EACrB,gBAAgB;AAClB;;AAEA;EACE,aAAa;EACb,8BAA8B;EAC9B,kBAAkB;EAClB,sBAAsB;EACtB,gCAAgC;AAClC;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,eAAe;EACf,oBAAoB;EACpB,sBAAsB;AACxB;;AAEA;EACE,6BAA6B;AAC/B;;AAEA;EACE,0CAA0C;AAC5C;;AAEA;EACE,0CAA0C;AAC5C;;AAEA;EACE,eAAe;EACf,eAAe;EACf,6BAA6B;EAC7B,YAAY;EACZ,eAAe;EACf,oBAAoB;EACpB,aAAa;EACb,qBAAqB;EACrB,uBAAuB;AACzB;;AAEA;EACE,eAAe;EACf,cAAc;AAChB;;AAEA;EACE,WAAW;EACX,kBAAkB;EAClB,eAAe;EACf,cAAc;EACd,SAAS;EACT,aAAa;EACb,sBAAsB;EACtB,yBAAyB;EACzB,8BAA8B;EAC9B,+BAA+B;AACjC","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');\n\nbody {\n  margin: 0;\n  height: 100vh;\n  background-color: #e9ecef;\n  font-family: 'Open Sans', sans-serif;\n  box-sizing: border-box;\n  padding: 130px 0;\n}\n\nmain {\n  width: 40%;\n  min-width: 450px;\n  font-size: 17px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background-color: #fff;\n  box-sizing: border-box;\n  border-radius: 8px;\n  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;\n  margin: 0 auto;\n}\n\n#header {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n  align-items: baseline;\n  padding: 30px 30px 20px;\n  box-sizing: border-box;\n  margin: 0;\n}\n\n#new-task {\n  width: 100%;\n  font-size: 15px;\n  padding: 15px 30px;\n  border-radius: 4px;\n  border: 1px solid #e9ecef;\n  box-sizing: border-box;\n  outline: none;\n  color: #8b8c89;\n}\n\n#new-task::placeholder {\n  color: #a5a58d;\n  font-style: italic;\n}\n\n#todo-list {\n  width: 100%;\n  min-height: 67px;\n  padding: 0;\n  margin: 0;\n  list-style-type: none;\n  font-weight: 300;\n}\n\n#todo-list li {\n  display: flex;\n  justify-content: space-between;\n  padding: 15px 25px;\n  box-sizing: border-box;\n  border-bottom: 1px solid #e9ecef;\n}\n\n.todo-input {\n  border: none;\n  outline: none;\n  font-size: 15px;\n  font-family: inherit;\n  align-self: flex-start;\n}\n\n.todo-task.active .todo-input {\n  text-decoration: line-through;\n}\n\n.todo-task.focus {\n  background-color: rgba(239, 211, 215, 0.2);\n}\n\n.todo-task.focus .todo-input {\n  background-color: rgba(239, 211, 215, 0.2);\n}\n\nbutton {\n  min-width: 30px;\n  cursor: pointer;\n  background-color: transparent;\n  border: none;\n  font-size: 1rem;\n  font-family: inherit;\n  display: flex;\n  align-items: baseline;\n  justify-content: center;\n}\n\ni {\n  font-size: 17px;\n  color: #a5a58d;\n}\n\n#clear-completed {\n  width: 100%;\n  text-align: center;\n  cursor: pointer;\n  color: #a5a58d;\n  margin: 0;\n  padding: 15px;\n  box-sizing: border-box;\n  background-color: #f5f3f4;\n  border-bottom-left-radius: 8px;\n  border-bottom-right-radius: 8px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -530,90 +555,10 @@ module.exports = styleTagTransform;
 
 /***/ })
 
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			id: moduleId,
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/nonce */
-/******/ 	(() => {
-/******/ 		__webpack_require__.nc = undefined;
-/******/ 	})();
-/******/ 	
-/************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
-
-})();
-
-/******/ })()
-;
+},
+/******/ __webpack_require__ => { // webpackRuntimeModules
+/******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+/******/ var __webpack_exports__ = (__webpack_exec__("./src/index.js"));
+/******/ }
+]);
 //# sourceMappingURL=main.js.map
