@@ -269,7 +269,8 @@ _defineProperty(Operation, "renderTodo", function () {
     btn.addEventListener('click', function () {
       Operation.edit(index);
     });
-  });
+  }); // select the checkbox
+
   var checkmarked = document.querySelectorAll('.checkbox');
   checkmarked.forEach(function (btn, index) {
     btn.addEventListener('click', function () {
@@ -280,7 +281,7 @@ _defineProperty(Operation, "renderTodo", function () {
 
 _defineProperty(Operation, "edit", function (i) {
   var todos = _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].getData();
-  var newDescription = prompt('Please Edit The Activity', todos[i].description); // store the edit to local storage
+  var newDescription = prompt('Please Edit Activity', todos[i].description); // store the edit to local storage
 
   if (newDescription) {
     todos[i].description = newDescription;
@@ -292,10 +293,14 @@ _defineProperty(Operation, "edit", function (i) {
 });
 
 _defineProperty(Operation, "remove", function (index) {
-  var todos = _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].getData();
-  todos.splice(index, 1);
+  // get data from local storage
+  var todos = _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].getData(); // remove the specific item
+
+  todos.splice(index, 1); // store back the updated array to local storage
+
   todos = _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].updateIndex(todos);
-  _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].setData(todos);
+  _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].setData(todos); // refresh the page
+
   _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].reloadPage();
 });
 
