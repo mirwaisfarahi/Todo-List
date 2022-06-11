@@ -1,38 +1,28 @@
+import Operation from './utils.js';
 import './style.css';
 
-// select the todo list item
-const todoListItems = document.querySelector('#todo-list');
+// select the refresh button
+const refreshList = document.querySelector('#refresh-list');
 
-// define an array to add todo tasks
-const todoList = [
-  {
-    index: 1,
-    description: 'Complete the Todo list task',
-    completed: false,
-  },
+// Select Todo form
+const todoForm = document.querySelector('#todo-form');
 
-  {
-    index: 2,
-    description: 'Attend Morning Session Meeting',
-    completed: false,
-  },
-];
+// select the input of todo form
+let newTask = document.querySelector('#new-task');
 
-// renderTodo function
-const renderTodo = (list) => {
-  // clean up tolistItems
-  todoListItems.innerHTML = '';
+// add an event listener for the page refresh
 
-  // loop through the todo list
-  list.forEach((item) => {
-    // create an li element
-    const li = document.createElement('li');
+refreshList.addEventListener('click', () => Operation.reloadPage());
 
-    // add data, checkbox and delete button to li
-    li.innerHTML = `<input type = 'checkbox'> ${item.description} <button id="delete"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button>`;
+// add an event Listener to the form and listen to the submit button
+todoForm.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-    todoListItems.appendChild(li);
-  });
-};
+  // call the add function
+  Operation.addTodo(newTask.value);
 
-renderTodo(todoList);
+  // clear the input box
+  newTask = '';
+});
+
+document.addEventListener('loadContent', Operation.renderTodo());
