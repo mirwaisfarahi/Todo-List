@@ -62,7 +62,7 @@ main {
   font-weight: 300;
 }
 
-#todo-list li {
+.item {
   display: flex;
   align-items: center;
   padding: 15px 25px;
@@ -72,9 +72,18 @@ main {
   position: relative;
 }
 
-#todo-list #delete {
+.checked {
+  text-decoration: line-through;
+}
+
+.delete {
   position: absolute;
   right: 10px;
+}
+
+.edit {
+  position: absolute;
+  right: 30px;
 }
 
 .todo-input {
