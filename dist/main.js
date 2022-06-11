@@ -9,7 +9,11 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils.js */ "./src/utils.js");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
+/* harmony import */ var _status_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./status.js */ "./src/status.js");
+/* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./storage.js */ "./src/storage.js");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
+
+
 
  // select the refresh button
 
@@ -17,10 +21,12 @@ var refreshList = document.querySelector('#refresh-list'); // Select Todo form
 
 var todoForm = document.querySelector('#todo-form'); // select the input of todo form
 
-var newTask = document.querySelector('#new-task'); // add an event listener for the page refresh
+var newTask = document.querySelector('#new-task'); // select the clear all completed todos
+
+var clearCompleted = document.querySelector('#clear-completed'); // add an event listener for the page refresh
 
 refreshList.addEventListener('click', function () {
-  return _utils_js__WEBPACK_IMPORTED_MODULE_0__["default"].reloadPage();
+  return _storage_js__WEBPACK_IMPORTED_MODULE_2__["default"].reloadPage();
 }); // add an event Listener to the form and listen to the submit button
 
 todoForm.addEventListener('submit', function (e) {
@@ -29,8 +35,118 @@ todoForm.addEventListener('submit', function (e) {
   _utils_js__WEBPACK_IMPORTED_MODULE_0__["default"].addTodo(newTask.value); // clear the input box
 
   newTask = '';
+}); // add event Listener to the clear completed todos
+
+clearCompleted.addEventListener('click', function () {
+  return _status_js__WEBPACK_IMPORTED_MODULE_1__["default"].clearCompleted();
 });
 document.addEventListener('loadContent', _utils_js__WEBPACK_IMPORTED_MODULE_0__["default"].renderTodo());
+
+/***/ }),
+
+/***/ "./src/status.js":
+/*!***********************!*\
+  !*** ./src/status.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./storage.js */ "./src/storage.js");
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var Status = /*#__PURE__*/_createClass(function Status() {
+  _classCallCheck(this, Status);
+});
+
+_defineProperty(Status, "completedCheck", function (i) {
+  var todos = _storage_js__WEBPACK_IMPORTED_MODULE_0__["default"].getData();
+  var todo = todos[i];
+  todos.forEach(function (item) {
+    if (item.index === todo.index) {
+      if (item.completed === false) {
+        item.completed = true;
+      } else {
+        item.completed = false;
+      }
+    }
+  }); // store the data to local storage
+
+  _storage_js__WEBPACK_IMPORTED_MODULE_0__["default"].setData(todos); // refresh the page
+
+  _storage_js__WEBPACK_IMPORTED_MODULE_0__["default"].reloadPage();
+});
+
+_defineProperty(Status, "clearCompleted", function () {
+  // get the data from local storage
+  var todos = _storage_js__WEBPACK_IMPORTED_MODULE_0__["default"].getData(); // filter all compelted todos where the completed status is false
+
+  var filteredTodo = todos.filter(function (x) {
+    return x.completed === false;
+  }); // stora the filtered data back to local storage with updated index
+
+  _storage_js__WEBPACK_IMPORTED_MODULE_0__["default"].setData(_storage_js__WEBPACK_IMPORTED_MODULE_0__["default"].updateIndex(filteredTodo)); // refresh the page
+
+  _storage_js__WEBPACK_IMPORTED_MODULE_0__["default"].reloadPage();
+});
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Status);
+
+/***/ }),
+
+/***/ "./src/storage.js":
+/*!************************!*\
+  !*** ./src/storage.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var LocalStorage = /*#__PURE__*/_createClass(function LocalStorage() {
+  _classCallCheck(this, LocalStorage);
+});
+
+_defineProperty(LocalStorage, "setData", function (item) {
+  return localStorage.setItem('todoList', JSON.stringify(item));
+});
+
+_defineProperty(LocalStorage, "getData", function () {
+  return JSON.parse(localStorage.getItem('todoList'));
+});
+
+_defineProperty(LocalStorage, "reloadPage", function () {
+  window.location.reload();
+  return false;
+});
+
+_defineProperty(LocalStorage, "updateIndex", function (todos) {
+  todos.forEach(function (todo, i) {
+    todos[i].index = i + 1;
+  });
+  return todos;
+});
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LocalStorage);
 
 /***/ }),
 
@@ -75,6 +191,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _todo_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./todo.js */ "./src/todo.js");
+/* harmony import */ var _storage_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./storage.js */ "./src/storage.js");
+/* harmony import */ var _status_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./status.js */ "./src/status.js");
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -85,27 +203,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+
 var Operation = /*#__PURE__*/_createClass(function Operation() {
   _classCallCheck(this, Operation);
-});
-
-_defineProperty(Operation, "setData", function (item) {
-  return localStorage.setItem('todoList', JSON.stringify(item));
-});
-
-_defineProperty(Operation, "getData", function () {
-  return JSON.parse(localStorage.getItem('todoList'));
-});
-
-_defineProperty(Operation, "reloadPage", function () {
-  window.location.reload();
-  return false;
 });
 
 _defineProperty(Operation, "addTodo", function (task) {
   if (task) {
     // get data from localstorage
-    var todoList = Operation.getData();
+    var todoList = _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].getData();
 
     if (todoList == null) {
       todoList = [];
@@ -118,9 +225,9 @@ _defineProperty(Operation, "addTodo", function (task) {
 
     todoList.push(todo); // add array to the local storage
 
-    Operation.setData(todoList); // refresh the window
+    _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].setData(todoList); // refresh the window
 
-    Operation.reloadPage();
+    _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].reloadPage();
   }
 });
 
@@ -129,7 +236,7 @@ _defineProperty(Operation, "renderTodo", function () {
   var todoListItems = document.querySelector('#todo-list'); // clean up tolistItems
 
   todoListItems.innerHTML = '';
-  var list = Operation.getData(); // loop through the todo list
+  var list = _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].getData(); // loop through the todo list
 
   if (list) {
     list.forEach(function (item) {
@@ -162,52 +269,39 @@ _defineProperty(Operation, "renderTodo", function () {
     btn.addEventListener('click', function () {
       Operation.edit(index);
     });
-  });
+  }); // select the checkbox
+
   var checkmarked = document.querySelectorAll('.checkbox');
   checkmarked.forEach(function (btn, index) {
     btn.addEventListener('click', function () {
-      return Operation.completedCheck(index);
+      return _status_js__WEBPACK_IMPORTED_MODULE_2__["default"].completedCheck(index);
     });
   });
 });
 
-_defineProperty(Operation, "remove", function (index) {
-  var todos = Operation.getData();
-  todos.splice(index, 1);
-  todos.forEach(function (todo, i) {
-    todos[i].index = i + 1;
-  });
-  Operation.setData(todos);
-  Operation.reloadPage();
-});
-
 _defineProperty(Operation, "edit", function (i) {
-  var todos = Operation.getData();
-  var newDescription = prompt('Please Edit The Activity', todos[i].description); // store the edit to local storage
+  var todos = _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].getData();
+  var newDescription = prompt('Please Edit Activity', todos[i].description); // store the edit to local storage
 
   if (newDescription) {
     todos[i].description = newDescription;
-    Operation.setData(todos);
+    _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].setData(todos);
   } // refresh the page
 
 
-  Operation.reloadPage();
+  _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].reloadPage();
 });
 
-_defineProperty(Operation, "completedCheck", function (i) {
-  var todos = Operation.getData();
-  var todo = todos[i];
-  todos.forEach(function (item) {
-    if (item.index === todo.index) {
-      if (item.completed === false) {
-        item.completed = true;
-      } else {
-        item.completed = false;
-      }
-    }
-  });
-  Operation.setData(todos);
-  Operation.reloadPage();
+_defineProperty(Operation, "remove", function (index) {
+  // get data from local storage
+  var todos = _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].getData(); // remove the specific item
+
+  todos.splice(index, 1); // store back the updated array to local storage
+
+  todos = _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].updateIndex(todos);
+  _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].setData(todos); // refresh the page
+
+  _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].reloadPage();
 });
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Operation);
