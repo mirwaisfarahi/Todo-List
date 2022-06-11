@@ -77,6 +77,7 @@ class Operation {
       });
     });
 
+    // select the checkbox
     const checkmarked = document.querySelectorAll('.checkbox');
     checkmarked.forEach((btn, index) => {
       btn.addEventListener('click', () => Status.completedCheck(index));
@@ -86,7 +87,7 @@ class Operation {
   // edit todo
   static edit = (i) => {
     const todos = LocalStorage.getData();
-    const newDescription = prompt('Please Edit The Activity', todos[i].description);
+    const newDescription = prompt('Please Edit Activity', todos[i].description);
 
     // store the edit to local storage
     if (newDescription) {
@@ -100,10 +101,17 @@ class Operation {
 
   // remove Todo
   static remove = (index) => {
+    // get data from local storage
     let todos = LocalStorage.getData();
+
+    // remove the specific item
     todos.splice(index, 1);
+
+    // store back the updated array to local storage
     todos = LocalStorage.updateIndex(todos);
     LocalStorage.setData(todos);
+
+    // refresh the page
     LocalStorage.reloadPage();
   }
 }
