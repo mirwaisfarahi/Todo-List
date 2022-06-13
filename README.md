@@ -17,7 +17,7 @@
 
 ## Live Demo
 
-- [App Live Demo](https://mirwaisfarahi.github.io/Todo-List)
+- [App Live Demo](https://mirwaisfarahi.github.io/Todo-List/dist)
 
 ## Getting Started
 
