@@ -17,6 +17,8 @@
 
 ## Live Demo
 
+- [App Live Demo](https://mirwaisfarahi.github.io/Todo-List)
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
