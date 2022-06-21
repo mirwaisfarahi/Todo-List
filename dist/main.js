@@ -239,7 +239,7 @@ _defineProperty(Operation, "renderTodo", function () {
   // select todo list
   var todoListItems = document.querySelector('#todo-list'); // clean up tolistItems
 
-  todoListItems.innerHTML = '';
+  todoListItems.innerHTML = 'demo';
   var list = _storage_js__WEBPACK_IMPORTED_MODULE_1__["default"].getData(); // loop through the todo list
 
   if (list) {
