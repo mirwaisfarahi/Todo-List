@@ -5,9 +5,10 @@ import Status from './status.js';
 class Operation {
   // Add task function
   static addTodo = (task) => {
+    let todoList = LocalStorage.getData();
+
     if (task) {
       // get data from localstorage
-      let todoList = LocalStorage.getData();
       if (todoList == null) {
         todoList = [];
       }
@@ -27,6 +28,8 @@ class Operation {
       // refresh the window
       LocalStorage.reloadPage();
     }
+
+    return todoList;
   }
 
   // renderTodo function
@@ -35,7 +38,7 @@ class Operation {
     const todoListItems = document.querySelector('#todo-list');
 
     // clean up tolistItems
-    todoListItems.innerHTML = '';
+    todoListItems.innerHTML = 'demo';
 
     const list = LocalStorage.getData();
 
@@ -55,7 +58,7 @@ class Operation {
         }
 
         // add data, checkbox and delete button to li
-        li.innerHTML = `<input type = "checkbox" class="checkbox" ${checked}> ${item.description} <button class="edit"><i class="fa fa-edit" aria-hidden="true"></i></button> <button class="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>`;
+        li.innerHTML = `<input type = "checkbox" class="checkbox" ${checked}> <input type="test" style="border: 0; width: 80%;" class="edit-desc" value="${item.description}"> <button class="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>`;
 
         todoListItems.appendChild(li);
       });
@@ -65,15 +68,15 @@ class Operation {
     const deleteTodo = document.querySelectorAll('.delete');
     deleteTodo.forEach((btn, index) => {
       btn.addEventListener('click', () => {
-        this.remove(index);
+        this.remove(index, list[index].description);
       });
     });
 
     // select edit from the list
-    const edit = document.querySelectorAll('.edit');
-    edit.forEach((btn, index) => {
-      btn.addEventListener('click', () => {
-        this.edit(index);
+    const edit = document.querySelectorAll('.edit-desc');
+    edit.forEach((input, index) => {
+      input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && input.value) this.edit(input.value, index);
       });
     });
 
@@ -85,9 +88,8 @@ class Operation {
   }
 
   // edit todo
-  static edit = (i) => {
+  static edit = (newDescription, i) => {
     const todos = LocalStorage.getData();
-    const newDescription = prompt('Please Edit Activity', todos[i].description);
 
     // store the edit to local storage
     if (newDescription) {
@@ -97,6 +99,8 @@ class Operation {
 
     // refresh the page
     LocalStorage.reloadPage();
+
+    return todos;
   }
 
   // remove Todo
@@ -113,6 +117,8 @@ class Operation {
 
     // refresh the page
     LocalStorage.reloadPage();
+
+    return todos;
   }
 }
 
