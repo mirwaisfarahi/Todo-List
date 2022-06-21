@@ -2,8 +2,8 @@ import Operation from '../utils.js';
 
 jest.mock('../storage.js');
 
-describe('Test addTodo and remove functions', () => {
-  // test addTodo function
+// test addTodo function
+describe('Test addTodo function', () => {
   it('add task 5 to the todos list', () => {
     expect(Operation.addTodo('task 5')).toEqual([
       { index: 1, description: 'task 1', completed: false },
@@ -23,8 +23,10 @@ describe('Test addTodo and remove functions', () => {
       { index: 4, description: 'task 5', completed: false },
     ]);
   });
+});
 
-  // test remove function
+// test remove function
+describe('Test remove function', () => {
   it('remove task 2 from the list', () => {
     expect(Operation.remove(1)).toEqual([
       { index: 1, description: 'task 1', completed: false },
