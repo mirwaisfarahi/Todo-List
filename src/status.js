@@ -21,6 +21,8 @@ class Status {
 
       // refresh the page
       LocalStorage.reloadPage();
+
+      return todos;
     }
 
     // clear all the completed tasks from the local storage
@@ -36,6 +38,8 @@ class Status {
 
       // refresh the page
       LocalStorage.reloadPage();
+
+      return filteredTodo;
     }
 }
 
