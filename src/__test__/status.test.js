@@ -20,6 +20,13 @@ describe('test complted task check', () => {
       { index: 4, description: 'task 4', completed: true },
     ]);
   });
+  
+test('clear all tasks where completed is equal to true', () => {
+    expect(Status.clearCompleted()).toEqual([
+      { index: 1, description: 'task 1', completed: false },
+      { index: 2, description: 'task 3', completed: false },
+    ]);
+  });
 
 
 });
