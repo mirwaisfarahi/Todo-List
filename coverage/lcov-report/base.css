@@ -1,3 +1,5 @@
+/* stylelint-disable */
+
 body, html {
   margin:0; padding: 0;
   height: 100%;
@@ -222,3 +224,4 @@ pre.prettyprint {
 .footer, .push {
   height: 48px;
 }
+/* stylelint-enable */
