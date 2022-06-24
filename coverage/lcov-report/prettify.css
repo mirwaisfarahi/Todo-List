@@ -1,5 +1,4 @@
 /* stylelint-disable */
-
 .pln { color: #000; }
 
 @media screen {
@@ -47,5 +46,4 @@ li.L3,
 li.L5,
 li.L7,
 li.L9 { background: #eee; }
-
 /* stylelint-enable */
